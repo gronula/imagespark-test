@@ -130,17 +130,20 @@ export default {
 
 .search {
   display: flex;
+  flex-grow: 1;
   margin-left: 16px;
 
   label {
     display: flex;
     align-items: center;
+    flex-grow: 1;
   }
 
   input {
+    flex-grow: 1;
     width: 100%;
     margin-right: 16px;
-    font-size: 1.3em;
+    font-size: 1.3rem;
     border: 0;
   }
 
@@ -165,6 +168,11 @@ export default {
   &:last-child {
     margin-bottom: 0;
   }
+
+  @media screen and (max-width: 480px) {
+    grid-gap: 16px;
+    grid-template-columns: 20px auto 60px 80px;
+  }
 }
 
 .rating-head {
@@ -178,7 +186,8 @@ export default {
 .rating-cell {
   display: flex;
   align-items: center;
-  font-size: 1.2em;
+  font-size: 1rem;
+  word-break: break-word;
 
   &:nth-of-type(1),
   &:nth-of-type(2),
@@ -198,6 +207,12 @@ export default {
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  @media screen and (max-width: 480px) {
+    &:nth-of-type(2) {
+      display: none;
+    }
+  }
 }
 
 .avatar {
@@ -213,21 +228,21 @@ export default {
   .rating-row:nth-of-type(1) .rating-cell:nth-of-type(2) & {
     width: 70px;
     height: 70px;
-    font-size: 1.6em;
+    font-size: 1.6rem;
     background-color: gold;
   }
 
   .rating-row:nth-of-type(2) .rating-cell:nth-of-type(2) & {
     width: 60px;
     height: 60px;
-    font-size: 1.4em;
+    font-size: 1.4rem;
     background-color: silver;
   }
 
   .rating-row:nth-of-type(3) .rating-cell:nth-of-type(2) & {
     width: 50px;
     height: 50px;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     background-color: chocolate;
   }
 }

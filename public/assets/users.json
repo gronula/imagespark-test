@@ -2,7 +2,7 @@
   "users": [{
     "id": 1,
     "name": "Денис",
-    "secondName": "Топорков1",
+    "secondName": "Топорков",
     "age": 30,
     "rating": 115
   }, {
@@ -20,7 +20,7 @@
   }, {
     "id": 4,
     "name": "Денис",
-    "secondName": "Топорков2",
+    "secondName": "Топорков",
     "age": 55,
     "rating": 102
   }, {
