@@ -40,6 +40,18 @@
         .rating-cell
           b {{ user.age }}
 
+      footer.rating-footer(v-if="currentUser")
+        .rating-cell {{ currentUser.pos }} из {{ users.length }}
+        .rating-cell
+          .avatar {{ currentUser.initials }}
+        .rating-cell
+          h4 {{ currentUser.fullName }}
+        .rating-cell
+          b {{ currentUser.rating }}
+          small {{ currentUser.ratingText }}
+        .rating-cell
+          b {{ currentUser.age }}
+
 </template>
 
 <script>
@@ -47,6 +59,7 @@ export default {
   data() {
     return {
       users: [],
+      currentUser: {},
       sortType: "desc",
       searchStr: ""
     };
@@ -107,6 +120,10 @@ export default {
       user.fullName = `${user.name} ${user.secondName}`;
     });
     this.users.sort((a, b) => this.sortFn(a.rating, b.rating));
+
+    this.currentUser = this.users[1];
+    this.currentUser.pos =
+      this.users.findIndex(user => user.id === this.currentUser.id) + 1;
   }
 };
 </script>
@@ -159,10 +176,11 @@ export default {
 }
 
 .rating-head,
-.rating-row {
+.rating-row,
+.rating-footer {
   display: grid;
   grid-gap: 24px;
-  grid-template-columns: 40px 80px auto 60px 80px;
+  grid-template-columns: 50px 80px auto 55px 70px;
   margin-bottom: 16px;
 
   &:last-child {
@@ -170,8 +188,8 @@ export default {
   }
 
   @media screen and (max-width: 480px) {
-    grid-gap: 16px;
-    grid-template-columns: 20px auto 60px 80px;
+    grid-gap: 12px;
+    grid-template-columns: 50px auto 55px 70px;
   }
 }
 
@@ -181,6 +199,11 @@ export default {
   h4[data-id] {
     cursor: pointer;
   }
+}
+
+.rating-footer {
+  padding-top: 16px;
+  border-top: 1px solid #000000;
 }
 
 .rating-cell {
@@ -244,6 +267,13 @@ export default {
     height: 50px;
     font-size: 1.2rem;
     background-color: chocolate;
+  }
+
+  .rating-footer & {
+    width: 70px;
+    height: 70px;
+    font-size: 1.6rem;
+    background-color: silver;
   }
 }
 </style>
